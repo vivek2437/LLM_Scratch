@@ -8,7 +8,7 @@ A from-scratch implementation and exploration of Large Language Models (LLMs), d
 
 - [Installation](#installation)
 - [Repository Structure](#repository-structure)
-- [Notebook Contents](#notebook-contents)
+- [Details: Notebooks Folder](#details-notebooks-folder)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -44,59 +44,59 @@ A from-scratch implementation and exploration of Large Language Models (LLMs), d
 ```
 LLM_Scratch/
 ├── notebook/
-│   ├── attention.ipynb
-│   ├── attention.py
-│   ├── llm_gpt.ipynb
-│   ├── llm_gpt.py
-│   ├── text_data.ipynb
-│   └── text_data.py
-└── teh-verdict.txt
+│   ├── step1.ipynb
+│   ├── step2.ipynb
+│   ├── step3.ipynb
+│   └── step4.ipynb
+├── teh-verdict.txt
+└── README.md
 ```
 
-- **notebook/**: Contains Jupyter notebooks and supporting scripts for LLM components and experiments.
+- **notebook/**: Contains Jupyter notebooks for each major conceptual step in building an LLM from scratch.
 - **teh-verdict.txt**: Sample text data used for tokenization and language modeling.
 
 ---
 
-## Notebook Contents
+## Details: Notebooks Folder
 
-### notebook/text_data.ipynb
-- **Section 1.1**: Downloads and loads `teh-verdict.txt` if not present.
-- Tokenizes the text using regex (splitting, filtering).
-- Builds vocabulary (unique tokens).
-- Maps each token to a unique integer ID and explores vocabulary statistics.
+### notebook/step1.ipynb — Data Loading & Tokenization
+- Downloads and reads `teh-verdict.txt` if not present, from an external URL.
+- Loads the file’s contents into a string.
+- Tokenizes the text using regex, splits and filters, then prepares a vocabulary (unique tokens) and maps each token to a unique integer ID.
+- Sets up the dataset for training and experiment steps.
+- **Key Concepts:** Data fetching, text preprocessing, vocabulary building.
 
-### notebook/attention.ipynb
-- **Section 2.x**: 
-    - Simple self-attention without trainable weights.
-    - Dot-product attention and softmax normalization.
-    - Trainable self-attention step-by-step implementation.
-    - Compact self-attention as a PyTorch class.
-    - Causal (autoregressive) masking and dropout in attention.
-    - Finalizes with a reusable SelfAttention module.
+### notebook/step2.ipynb — Attention Mechanisms
+- Introduces the concept of attention in neural networks.
+- **2.1:** Implements a simple self-attention mechanism (no trainable weights) using PyTorch tensors, computes dot products between input vectors and a query, and prints attention scores.
+- Progresses to softmax normalization, attention weights, and context vectors.
+- Builds toward more complex attention modules (including trainable weights, masking for causality, and modularization).
+- **Key Concepts:** Self-attention, dot-product, softmax, context vectors, masking.
 
-### notebook/llm_gpt.ipynb
-- **Section 3.x**:
-    - Defines a GPT/transformer config.
-    - Implements dummy transformer blocks, layer normalization, GELU activations.
-    - Adds feed-forward layers.
-    - Demonstrates residual (shortcut) connections.
-    - Builds a full GPT model class.
-    - Shows text generation, decoding, and parameter/memory sizing.
-    - Generates text using the model.
+### notebook/step3.ipynb — From Attention to GPT
+- Implements a GPT-like architecture from scratch.
+- Defines a model config (vocab size, embedding size, context length, number of heads/layers, dropout, etc.).
+- Implements dummy transformer blocks and layer normalization in PyTorch.
+- Assembles token embeddings, positional embeddings, dropout, transformer block stack, normalization, and output head.
+- Provides a forward pass for model input through all layers.
+- **Key Concepts:** Transformer block structure, layer normalization, residual connections, full model assembly, text generation, model parameterization.
+
+### notebook/step4.ipynb — Advanced/Experimental (Expand as Needed)
+- [Content may vary based on your latest work. Add details as the notebook evolves.]
+- This notebook is intended for continuing the LLM project, adding advanced features, experiments, training/inference workflows, or research ideas.
 
 ---
 
 ## Usage
 
-- **Run any notebook (example with Jupyter):**
+- **Run notebooks:**
   ```bash
   jupyter notebook
   ```
-  Open and explore notebooks in the `notebook/` directory.
+  Open and explore the notebooks in the `notebook/` directory.
 
 - **Data:**  
-  The code will automatically fetch `teh-verdict.txt` if not present.
+  The code will fetch `teh-verdict.txt` automatically if not present.
 
 - **Dependencies:**  
   Most notebooks require: `torch`, `numpy`, `tiktoken`, `matplotlib`, and Python standard libraries.
@@ -123,7 +123,7 @@ word_to_id = {word: idx for idx, word in enumerate(vocab)}
 
 ---
 
-## Example: Simple Self-Attention (from attention.ipynb)
+## Example: Simple Self-Attention
 
 ```python
 import torch
@@ -143,7 +143,7 @@ context_vec = torch.sum(attn_weights[:, None] * inputs, dim=0)
 
 ---
 
-## Example: Minimal GPT Model (from llm_gpt.ipynb)
+## Example: Minimal GPT Model
 
 ```python
 import torch, torch.nn as nn
