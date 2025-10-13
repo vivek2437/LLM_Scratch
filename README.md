@@ -68,7 +68,7 @@ LLM_Scratch/
 
 ### notebook/step2.ipynb — Attention Mechanisms
 - Introduces the concept of attention in neural networks.
-- **2.1:** Implements a simple self-attention mechanism (no trainable weights) using PyTorch tensors, computes dot products between input vectors and a query, and prints attention scores.
+- Implements a simple self-attention mechanism (no trainable weights) using PyTorch tensors, computes dot products between input vectors and a query, and prints attention scores.
 - Progresses to softmax normalization, attention weights, and context vectors.
 - Builds toward more complex attention modules (including trainable weights, masking for causality, and modularization).
 - **Key Concepts:** Self-attention, dot-product, softmax, context vectors, masking.
@@ -82,7 +82,6 @@ LLM_Scratch/
 - **Key Concepts:** Transformer block structure, layer normalization, residual connections, full model assembly, text generation, model parameterization.
 
 ### notebook/step4.ipynb — Advanced/Experimental (Expand as Needed)
-- [Content may vary based on your latest work. Add details as the notebook evolves.]
 - This notebook is intended for continuing the LLM project, adding advanced features, experiments, training/inference workflows, or research ideas.
 
 ---
